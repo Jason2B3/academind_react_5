@@ -1,11 +1,11 @@
-import React from 'react';
-
-import Card from './Card';
-import Button from './Button';
-import classes from './ErrorModal.module.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import Card from "./Card";
+import Button from "./Button";
+import classes from "./ErrorModal.module.css";
 
 const ErrorModal = (props) => {
-  return (
+  return ReactDOM.createPortal(
     <React.Fragment>
       <div className={classes.backdrop} onClick={props.onConfirm} />
       <Card className={classes.modal}>
@@ -19,7 +19,8 @@ const ErrorModal = (props) => {
           <Button onClick={props.onConfirm}>Okay</Button>
         </footer>
       </Card>
-    </React.Fragment>
+    </React.Fragment>,
+    document.getElementById("modal-root")
   );
 };
 
